@@ -1,15 +1,27 @@
-app = "my-bot-5xcqza"
-primary_region = "ams"
+# fly.toml app configuration file generated for my-bot-5xcqza on 2026-11-14T07:58:42Z
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
+app = 'my-bot-5xcqza'
+primary_region = 'ams'
 
 [build]
+[processes]
+  app = 'python bot.py'
 
 [[mounts]]
-  source = "botdata"
-  destination = "/data"
+  source = 'botdata'
+  destination = '/data'
 
-[processes]
-  app = "python bot.py"
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "256mb"
+  size = 'shared-cpu-1x'
+  memory = '256mb'
