@@ -1,0 +1,15 @@
+app = "my-bot-5xcqza"
+primary_region = "ams"
+
+[build]
+
+[[mounts]]
+  source = "botdata"
+  destination = "/data"
+
+[processes]
+  app = "python bot.py"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
